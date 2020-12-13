@@ -1,20 +1,13 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-<<<<<<< HEAD
 	id 'org.sonarqube' version '2.6'
-=======
->>>>>>> 8357c7f18043d3342c7c13a2e43540384e26cb5f
 	id 'java'
 }
 
 group = 'ru.natashalun'
 version = '0.0.1-SNAPSHOT'
-<<<<<<< HEAD
 sourceCompatibility = '8'
-=======
-sourceCompatibility = '11'
->>>>>>> 8357c7f18043d3342c7c13a2e43540384e26cb5f
 
 repositories {
 	mavenCentral()
