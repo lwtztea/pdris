@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
 	id 'org.sonarqube' version '2.6'
+	id 'jacoco'
 	id 'java'
 }
 
@@ -11,6 +12,13 @@ sourceCompatibility = '8'
 
 repositories {
 	mavenCentral()
+}
+
+sonarqube {
+  properties {
+    property "sonar.projectName", "My Project Name"
+    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
+  }
 }
 
 
