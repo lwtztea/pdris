@@ -117,7 +117,7 @@ public class CurrencyDAO {
                         name = item.getTextContent();
                     }
                 }
-                if (dollarParsed) {
+                if (dollarParsed && nominal != 0) {
                     return new Currency(name, value / nominal, date);
                 }
             }
