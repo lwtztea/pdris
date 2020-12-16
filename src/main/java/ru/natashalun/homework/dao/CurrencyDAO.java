@@ -22,6 +22,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Repository
 public class CurrencyDAO {
@@ -101,7 +103,7 @@ public class CurrencyDAO {
                 }
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
-            e.printStackTrace();
+            Logger.getAnonymousLogger().log(Level.ALL, "Error", e);
             return null;
         }
         return null;
