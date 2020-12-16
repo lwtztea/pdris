@@ -14,12 +14,6 @@ repositories {
 	mavenCentral()
 }
 
-sonarqube {
-  properties {
-    property "sonar.projectName", "My Project Name"
-    property "sonar.projectKey", "org.sonarqube:java-gradle-simple"
-  }
-}
 
 
 dependencies {
