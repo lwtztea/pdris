@@ -1,6 +1,7 @@
 package ru.natashalun.homework.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.natashalun.homework.entities.Weather;
 import ru.natashalun.homework.services.WeatherService;
@@ -14,7 +15,7 @@ public class WeatherController {
     @Autowired
     private WeatherService weatherService;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Weather> getLastWeather(
             @RequestParam(value = "days", required = false) Integer n,
             @RequestParam(value = "city", required = false) String city
