@@ -1,8 +1,6 @@
 plugins {
 	id 'org.springframework.boot' version '2.4.1'
 	id 'io.spring.dependency-management' version '1.0.10.RELEASE'
-	id 'org.sonarqube' version '2.6'
-	id 'jacoco'
 	id 'java'
 }
 
@@ -14,19 +12,6 @@ repositories {
 	mavenCentral()
 }
 
-
-
-dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-
-	implementation 'org.apache.commons:commons-math3:3.6.1'
-	implementation 'org.json:json:20201115'
-
-	testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
-test {
-	useJUnitPlatform()
+bootJar {
+	enabled = false
 }

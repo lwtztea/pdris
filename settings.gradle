@@ -1,1 +1,4 @@
 rootProject.name = 'sberwork'
+include 'predict_service'
+include 'currency_service'
+include 'weather_service'
