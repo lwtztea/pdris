@@ -43,7 +43,7 @@ public class PredictService {
     List<Weather> getLastWeather(int n) {
         ResponseEntity<Weather[]> response =
                 new RestTemplate().getForEntity(
-                        "http://localhost:8081/weather/?days=" + n,
+                        "http://weather:8081/weather/?days=" + n,
                         Weather[].class);
         Weather[] weather = response.getBody();
         return Arrays.asList(weather);
@@ -52,7 +52,7 @@ public class PredictService {
     List<Currency> getLastStocks(int n) {
         ResponseEntity<Currency[]> response =
                 new RestTemplate().getForEntity(
-                        "http://localhost:8080/currency/" + n,
+                        "http://currency:8080/currency/" + n,
                         Currency[].class);
         Currency[] currency = response.getBody();
         return Arrays.asList(currency);
