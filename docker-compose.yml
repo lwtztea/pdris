@@ -1,0 +1,17 @@
+services:
+  currency:
+    image: currency_service:latest
+    ports:
+      - 8080:8080
+  weather:
+    image: weather_service:latest
+    ports:
+      - 8081:8081
+  predict:
+    image: predict_service:latest
+    ports:
+      - 8082:8082
+  eureka:
+    image: eureka_service:latest
+    ports:
+      - 8083:8083
