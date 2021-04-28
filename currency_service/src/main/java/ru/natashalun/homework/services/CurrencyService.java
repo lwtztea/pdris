@@ -9,8 +9,8 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.xml.MappingJackson2XmlHttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import ru.natashalun.homework.dao.CurrencyDAO;
 import ru.natashalun.homework.entities.Currency;
+import ru.natashalun.homework.dao.CurrencyDAO;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -20,7 +20,6 @@ import java.util.List;
 
 @Service
 public class CurrencyService {
-
     @Autowired
     private CurrencyDAO currencyDAO;
 
@@ -33,7 +32,7 @@ public class CurrencyService {
         for (int i = 0; i < n; i++) {
             LocalDate date = LocalDate.now().minusDays(i);
 
-            Currency stored = currencyDAO.getExchangeRateForDate(LocalDate.now());
+            Currency stored = currencyDAO.findCurrencyByDate(LocalDate.now());
             if (stored != null) {
                 result.add(stored);
                 continue;
@@ -60,13 +59,17 @@ public class CurrencyService {
 
             Currency localResult = null;
             if (responseEntity.getBody() != null) {
-                for (CurrencyListXML.CurrencyXML item : responseEntity.getBody().currencyList){
+                for (CurrencyListXML.CurrencyXML item : responseEntity.getBody().currencyList) {
                     if (item.name.equals("Доллар США")) {
                         localResult = item.toCurrency(date);
                     }
                 }
             }
-            currencyDAO.setExchangeRateForDate(date, localResult);
+
+            if (localResult == null) {
+                continue;
+            }
+            currencyDAO.save(localResult);
             result.add(localResult);
         }
         return result;

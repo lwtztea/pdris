@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import ru.natashalun.homework.dao.WeatherDAO;
 import ru.natashalun.homework.entities.Weather;
+import ru.natashalun.homework.dao.WeatherDAO;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -38,7 +38,7 @@ public class WeatherService {
         List<Weather> result = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             LocalDate date = currentDate.minusDays(i);
-            Weather stored = weatherDAO.getWeather(date, city);
+            Weather stored = weatherDAO.findWeatherByDateAndCity(date, city);
             if (stored != null) {
                 result.add(stored);
                 continue;
@@ -64,8 +64,9 @@ public class WeatherService {
                         .get(0)
                         .weatherJSON
                         .toWeather(date);
+                localResult.setCity(city);
                 result.add(localResult);
-                weatherDAO.setWeather(date, city, localResult);
+                weatherDAO.save(localResult);
             }
         }
         return result;

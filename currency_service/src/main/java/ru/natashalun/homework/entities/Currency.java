@@ -1,11 +1,22 @@
 package ru.natashalun.homework.entities;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDate;
 
+@Entity
 public class Currency implements Comparable<Currency> {
-    private final String name;
-    private final float rate;
-    private final LocalDate date;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private float rate;
+    private LocalDate date;
+
+    public Currency() {
+    }
 
     public Currency(String name, float rate, LocalDate date) {
         this.name = name;
