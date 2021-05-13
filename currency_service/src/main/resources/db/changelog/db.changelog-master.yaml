@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      # schema
+      file: db/changelog/createCurrencySchema.sql
+  - include:
+      # table
+      file: db/changelog/createCurrencyTable.sql

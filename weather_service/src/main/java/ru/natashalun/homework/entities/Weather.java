@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class Weather implements Comparable<Weather> {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private float maxTemp;
     private float minTemp;
