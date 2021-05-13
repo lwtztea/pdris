@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-service.deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: weather-service
+  template:
+    metadata:
+      name: weather-service.pod
+      labels:
+        app: weather-service
+    spec:
+      containers:
+        - image: lwtztea/weather_service:latest
+          name: weather-service
+          ports:
+            - containerPort: 8081
+          imagePullPolicy: IfNotPresent
