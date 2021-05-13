@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-service.deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eureka-service
+  template:
+    metadata:
+      name: eureka-service.pod
+      labels:
+        app: eureka-service
+    spec:
+      containers:
+        - image: lwtztea/eureka_service:latest
+          name: eureka-service
+          ports:
+            - containerPort: 8083
+          imagePullPolicy: IfNotPresent

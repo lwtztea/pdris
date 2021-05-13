@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: currency-service.deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: currency-service
+  template:
+    metadata:
+      name: currency-service.pod
+      labels:
+        app: currency-service
+    spec:
+      containers:
+        - image: lwtztea/currency_service:latest
+          name: currency-service
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: IfNotPresent

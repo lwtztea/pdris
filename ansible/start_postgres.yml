@@ -1,0 +1,19 @@
+- name: Start postgres
+  vars:
+    ansible_ssh_user: edumfti
+  hosts: centos
+  tasks:
+    - name: сreate directory
+      file:
+        path: /edu/luneva/
+        state: directory
+    - name: upload docker-compose
+      copy:
+        src=postgres.yml
+        dest=/edu/luneva/postgres.yml
+    - name: start postgres
+      docker_compose:
+        project_src: /edu/luneva/
+        files:
+          - postgres.yml
+        state: present
