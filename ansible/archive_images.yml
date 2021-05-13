@@ -1,0 +1,30 @@
+- name: Archive images
+  vars:
+    ansible_python_interpreter: ../venv/bin/python
+    ansible_connection: local
+  hosts: local
+  tasks:
+    - name: Archive currency service
+      docker_image:
+        archive_path: ./images/currency_service.tar
+        name: lwtztea/currency_service
+        state: present
+        source: local
+    - name: Archive eureka service
+      docker_image:
+        archive_path: ./images/eureka_service.tar
+        name: lwtztea/eureka_service
+        state: present
+        source: local
+    - name: Archive predict service
+      docker_image:
+        archive_path: ./images/predict_service.tar
+        name: lwtztea/predict_service
+        state: present
+        source: local
+    - name: Archive weather service
+      docker_image:
+        archive_path: ./images/weather_service.tar
+        name: lwtztea/weather_service
+        state: present
+        source: local
