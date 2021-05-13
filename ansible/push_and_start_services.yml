@@ -1,0 +1,47 @@
+- name: Push and start services
+  vars:
+    ansible_ssh_user: mftiedu
+  hosts: ubuntu
+  tasks:
+    - name: сreate directory
+      file:
+        path: /edu/luneva/
+        state: directory
+    - name: upload images
+      copy:
+        src=images
+        dest=/edu/luneva/
+    - name: load currency service
+      docker_image:
+        load_path: /edu/luneva/images/currency_service.tar
+        name: lwtztea/currency_service
+        state: present
+        source: load
+    - name: load eureka service
+      docker_image:
+        load_path: /edu/luneva/images/eureka_service.tar
+        name: lwtztea/eureka_service
+        state: present
+        source: load
+    - name: load predict service
+      docker_image:
+        load_path: /edu/luneva/images/predict_service.tar
+        name: lwtztea/predict_service
+        state: present
+        source: load
+    - name: load weather service
+      docker_image:
+        load_path: /edu/luneva/images/weather_service.tar
+        name: lwtztea/weather_service
+        state: present
+        source: load
+    - name: upload docker-compose
+      copy:
+        src=services.yml
+        dest=/edu/luneva/services.yml
+    - name: start services
+      docker_compose:
+        project_src: /edu/luneva/
+        files:
+          - services.yml
+        state: present

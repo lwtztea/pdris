@@ -36,3 +36,11 @@ build
 
 ### VS Code ###
 .vscode/
+
+### Ansible ###
+ansible/images
+exporting
+
+### Python VENV ###
+venv
+
