@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: predict-service.deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: predict-service
+  template:
+    metadata:
+      name: predict-service.pod
+      labels:
+        app: predict-service
+    spec:
+      containers:
+        - image: lwtztea/predict_service:latest
+          name: predict-service
+          ports:
+            - containerPort: 8082
+          imagePullPolicy: IfNotPresent
