@@ -3,10 +3,14 @@ services:
     image: lwtztea/currency_service:latest
     ports:
       - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:postgresql://194.87.111.112:15432/postgres
   weather:
     image: lwtztea/weather_service:latest
     ports:
       - 8081:8081
+    environment:
+      - spring.datasource.url=jdbc:postgresql://194.87.111.112:15432/postgres
   predict:
     image: lwtztea/predict_service:latest
     ports:
@@ -15,9 +19,3 @@ services:
     image: lwtztea/eureka_service:latest
     ports:
       - 8083:8083
-  postgres:
-    image: postgres
-    environment:
-      - POSTGRES_PASSWORD=root
-    ports:
-      - 5432:5432
