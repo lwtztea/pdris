@@ -9,7 +9,7 @@ import java.time.LocalDate;
 @Entity
 public class Currency implements Comparable<Currency> {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     private float rate;

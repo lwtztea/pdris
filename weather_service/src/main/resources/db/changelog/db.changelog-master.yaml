@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      # schema
+      file: db/changelog/createWeatherSchema.sql
+  - include:
+      # table
+      file: db/changelog/createWeatherTable.sql
