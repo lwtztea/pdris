@@ -15,11 +15,14 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
     implementation 'org.apache.commons:commons-math3:3.6.1'
     implementation 'org.json:json:20201115'
     implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml'
     implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+    implementation 'org.postgresql:postgresql:9.4-1206-jdbc42'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
